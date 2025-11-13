@@ -7,68 +7,104 @@
     <style>
         /* Estilos generales */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background: #f9f9f9;
-            color: #333;
+            background-color: #fdfdfd;
+            color: #444;
         }
 
         header {
-            background: url('https://via.placeholder.com/1400x500') no-repeat center center/cover;
+            background: url('https://via.placeholder.com/1400x700') no-repeat center center/cover;
             text-align: center;
             color: white;
-            padding: 100px 20px;
+            padding: 150px 20px;
+            margin-bottom: 30px;
         }
 
         header h1 {
             font-size: 3.5rem;
             margin: 0;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
         }
 
         header p {
             font-size: 1.5rem;
+            margin: 10px 0;
         }
 
         section {
-            padding: 20px;
+            padding: 40px 20px;
             max-width: 1200px;
             margin: auto;
         }
 
         section h2 {
             font-size: 2.5rem;
-            color: #333;
+            color: #222;
             text-align: center;
-            margin-bottom: 20px;
-            text-transform: uppercase;
+            margin-bottom: 30px;
         }
 
         section p {
             font-size: 1.25rem;
             margin-bottom: 20px;
+            text-align: justify;
         }
 
-        .contacto {
-            font-size: 1.5rem;
+        /* Estilo del menú */
+        .menu-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .menu-item {
+            flex: 1 1 calc(33.33% - 20px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
             text-align: center;
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: auto;
+        }
+
+        .menu-item p {
+            padding: 10px;
+        }
+
+        /* Mapa */
+        #map {
+            width: 100%;
+            height: 400px;
+            border: 1px solid #ddd;
+            margin: 30px 0;
         }
 
         footer {
             text-align: center;
-            padding: 10px;
+            padding: 15px;
             background-color: #222;
             color: white;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
+            .menu-item {
+                flex: 1 1 calc(50% - 20px);
+            }
+
             header h1 {
                 font-size: 2.5rem;
             }
 
-            header p, section p {
+            header p {
                 font-size: 1.1rem;
             }
         }
@@ -78,49 +114,73 @@
 
 <header>
     <h1>HOTEL Y RESTAURANTE PINO GRANDE</h1>
-    <p>Vive una experiencia única de confort y tranquilidad en un entorno natural.</p>
+    <p>Disfruta de confort, naturaleza y gastronomía en un entorno inolvidable.</p>
 </header>
+
+<section>
+    <h2>Bienvenidos a un Lugar Único</h2>
+    <p>
+        Descubre un rincón escondido en Aldea Machaquilá, Poptún, Petén, donde la calma natural se une con 
+        la cálida hospitalidad de nuestras encantadoras cabañas. En nuestro hotel, cada detalle está pensado 
+        para tu comodidad y relajación.
+    </p>
+</section>
 
 <section>
     <h2>Nuestras Cabañas</h2>
     <p>
-        Sumérgete en una experiencia única de confort y tranquilidad en nuestras encantadoras habitaciones estilo cabañas. Diseñadas para ofrecerte una escapada perfecta, cada cabaña combina la calidez rústica con todas las comodidades modernas.
+        Explora cabañas de estilo rústico pero modernas, diseñadas para una escapada ideal. Desde ventanas llenas de luz hasta 
+        camas confortables, tu experiencia será inolvidable. Cada cabaña está rodeada de exuberancia verde, permitiendo paz y 
+        máximo contacto con el entorno natural.
     </p>
 </section>
 
 <section>
-    <h2>Un Ecosistema Natural en Tu Puerta</h2>
-    <p>
-        Nuestras cabañas están ubicadas en un ecosistema exuberante y vibrante, rodeado de una abundante vegetación. Aquí, la naturaleza florece en todo su esplendor, con una diversidad de plantas y árboles que crean un entorno fresco y revitalizante.
-    </p>
+    <h2>Menú Elegante</h2>
+    <div class="menu-container">
+        <div class="menu-item">
+            <img src="https://via.placeholder.com/400x300" alt="Plato típico">
+            <p>Huevos con frijoles, acompañados de plátanos fritos y tortillas recién hechas.</p>
+        </div>
+        <div class="menu-item">
+            <img src="https://via.placeholder.com/400x300" alt="Plato típico">
+            <p>Pollo al horno con ensalada fresca de la región.</p>
+        </div>
+        <div class="menu-item">
+            <img src="https://via.placeholder.com/400x300" alt="Plato típico">
+            <p>Café 100% guatemalteco, tostado con el aroma perfecto.</p>
+        </div>
+    </div>
 </section>
 
-<section>
-    <h2>Desayunos Tradicionales</h2>
-    <p>
-        Comienza tu día con un delicioso desayuno guatemalteco preparado con ingredientes frescos y locales. Ofrecemos una variedad de platillos tradicionales como huevos con frijoles, plátanos fritos, tortillas recién hechas y el infaltable café guatemalteco.
-    </p>
-</section>
-
-<section>
-    <h2>Contáctanos</h2>
-    <p class="contacto">
-        Teléfono: <strong>5804-3907</strong><br>
-        Dirección: Aldea Machaquilá, Poptún, Petén, Guatemala (KM385 Ruta a Petén)<br>
-        <a href="https://www.google.com/maps/dir//Aldea+Machaquila+Poptum+Peten+Exactamente+KM385+Ruta+a/" target="_blank">Ver en Google Maps</a>
-    </p>
-</section>
-
-<section>
-    <h2>Menú</h2>
-    <p class="contacto">
-        Consulta aquí nuestro menú completo: <a href="https://menupinogrande.wordpress.com" target="_blank">Menú del Restaurante</a>
+<section id="contacto">
+    <h2>Ubicación</h2>
+    <div id="map"></div>
+    <p style="text-align: center;">
+        Dirección: Aldea Machaquilá, Poptún, Petén, Guatemala<br>
+        Teléfono: <strong>5804-3907</strong>
     </p>
 </section>
 
 <footer>
     <p>&copy; 2025 Hotel y Restaurante Pino Grande. Todos los derechos reservados.</p>
 </footer>
+
+<!-- Google Maps API -->
+<script>
+    function initMap() {
+        var location = { lat: 16.3718811, lng: -89.4418307 };
+        var map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 14,
+            center: location
+        });
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map
+        });
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY&callback=initMap" async></script>
 
 </body>
 </html>
