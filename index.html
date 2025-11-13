@@ -1,293 +1,126 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Sistema de Recepción de Hotel</title>
-	<style>
-		body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
-		.container { max-width: 900px; margin: 30px auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 2px 8px #ccc; }
-		h1 { text-align: center; color: #2c3e50; }
-		.flex { display: flex; gap: 30px; }
-		.form-section, .list-section { flex: 1; }
-		label { display: block; margin-top: 10px; }
-		input, select { width: 100%; padding: 7px; margin-top: 5px; border-radius: 4px; border: 1px solid #ccc; }
-		button { margin-top: 15px; padding: 10px 20px; background: #2980b9; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
-		button:hover { background: #3498db; }
-		table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-		th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
-		th { background: #2980b9; color: #fff; }
-		.disponible { color: green; font-weight: bold; }
-		.ocupada { color: red; font-weight: bold; }
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel y Restaurante Pino Grande</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background: url('https://via.placeholder.com/1400x500') no-repeat center center/cover;
+            text-align: center;
+            color: white;
+            padding: 100px 20px;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin: 0;
+        }
+
+        header p {
+            font-size: 1.5rem;
+        }
+
+        section {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        section p {
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+        }
+
+        .contacto {
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #222;
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            header p, section p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-	<div class="container">
-		<div class="flex">
-			<div class="form-section">
-				<!-- ...existing code... -->
-			</div>
-			<div class="list-section">
-				<button id="btnInformeOcupadas" style="background:#27ae60; color:#fff; padding:10px 20px; border:none; border-radius:4px; margin-bottom:20px; cursor:pointer;">Informe diario de habitaciones ocupadas</button>
-				<div id="informeOcupadas" style="margin-bottom:20px;"></div>
-				<!-- ...existing code... -->
-			</div>
-		</div>
-		<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-			<h1 style="margin: 0;">Sistema de Recepción de Hotel</h1>
-			<button id="borrarTodo" style="background:#e74c3c; color:#fff; padding:10px 20px; border:none; border-radius:4px; cursor:pointer;">Borrar Todo</button>
-		</div>
 
-		<div class="flex">
-			<div class="form-section">
+<header>
+    <h1>HOTEL Y RESTAURANTE PINO GRANDE</h1>
+    <p>Vive una experiencia única de confort y tranquilidad en un entorno natural.</p>
+</header>
 
+<section>
+    <h2>Nuestras Cabañas</h2>
+    <p>
+        Sumérgete en una experiencia única de confort y tranquilidad en nuestras encantadoras habitaciones estilo cabañas. Diseñadas para ofrecerte una escapada perfecta, cada cabaña combina la calidez rústica con todas las comodidades modernas.
+    </p>
+</section>
 
-				<h2>Check-in</h2>
+<section>
+    <h2>Un Ecosistema Natural en Tu Puerta</h2>
+    <p>
+        Nuestras cabañas están ubicadas en un ecosistema exuberante y vibrante, rodeado de una abundante vegetación. Aquí, la naturaleza florece en todo su esplendor, con una diversidad de plantas y árboles que crean un entorno fresco y revitalizante.
+    </p>
+</section>
 
-				<form id="formCheckin">
-					<label>Habitación
-						<select id="habitacionCheckin"></select>
-					</label>
-					<label>Nombre del Huésped
-						<input type="text" id="nombreHuesped" required>
-					</label>
-					<label>Fecha de Ingreso
-						<input type="date" id="fechaIngreso" required>
-					</label>
-					<label>Fecha de Salida
-						<input type="date" id="fechaSalida" required>
-					</label>
-					<button type="submit">Registrar Check-in</button>
-				</form>
+<section>
+    <h2>Desayunos Tradicionales</h2>
+    <p>
+        Comienza tu día con un delicioso desayuno guatemalteco preparado con ingredientes frescos y locales. Ofrecemos una variedad de platillos tradicionales como huevos con frijoles, plátanos fritos, tortillas recién hechas y el infaltable café guatemalteco.
+    </p>
+</section>
 
-				<h2>Check-out</h2>
-				<form id="formCheckout">
-					<label>Habitación
-						<select id="habitacionCheckout"></select>
-					</label>
-					<button type="submit">Registrar Check-out</button>
-				</form>
-			</div>
-			<div class="list-section">
-				<h2>Estado de Habitaciones</h2>
-				<table>
-					<thead>
-						<tr>
-							<th>Número</th>
-							<th>Estado</th>
-							<th>Huésped</th>
-							<th>Ingreso</th>
-							<th>Salida</th>
-							<th>¿Ingresó?</th>
-							<th>¿Pagó?</th>
-						</tr>
-					</thead>
-					<tbody id="tablaHabitaciones"></tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-	<script>
-// Asegurar que el botón funcione correctamente al cargar el DOM
-document.addEventListener('DOMContentLoaded', function() {
-	var btn = document.getElementById('borrarTodo');
-	if (btn) {
-		btn.onclick = function() {
-			if (confirm('¿Seguro que deseas borrar todos los datos?')) {
-				localStorage.removeItem('habitaciones');
-				render();
-			}
-		};
-	}
-});
-		// Utilidades para LocalStorage
-		function getHabitaciones() {
-			return JSON.parse(localStorage.getItem('habitaciones') || '[]');
-		}
-		function setHabitaciones(habs) {
-			localStorage.setItem('habitaciones', JSON.stringify(habs));
-		}
+<section>
+    <h2>Contáctanos</h2>
+    <p class="contacto">
+        Teléfono: <strong>5804-3907</strong><br>
+        Dirección: Aldea Machaquilá, Poptún, Petén, Guatemala (KM385 Ruta a Petén)<br>
+        <a href="https://www.google.com/maps/dir//Aldea+Machaquila+Poptum+Peten+Exactamente+KM385+Ruta+a/" target="_blank">Ver en Google Maps</a>
+    </p>
+</section>
 
-		// Renderizar tabla y selects
-		function render() {
-			let habitaciones = getHabitaciones();
-			// Si no hay habitaciones, crear 41 por defecto
-			if (habitaciones.length !== 41) {
-				habitaciones = Array.from({length: 41}, (_, i) => ({
-					numero: (i+1).toString(),
-					estado: 'Disponible',
-					reservas: [],
-					ocupacion: null
-				}));
-				setHabitaciones(habitaciones);
-			}
-				const tabla = document.getElementById('tablaHabitaciones');
-				const selectCheckin = document.getElementById('habitacionCheckin');
-				const selectCheckout = document.getElementById('habitacionCheckout');
-				tabla.innerHTML = '';
-				selectCheckin.innerHTML = '';
-				selectCheckout.innerHTML = '';
-				const hoy = new Date().toISOString().slice(0,10);
-				habitaciones.forEach(h => {
-					if (h.ocupacion) {
-						const ingreso = h.ocupacion.ingreso ? '✔️' : '❌';
-						const pago = h.ocupacion.pago ? '✔️' : '❌';
-						const tr = document.createElement('tr');
-						tr.innerHTML = `
-							<td>${h.numero}</td>
-							<td class="ocupada">Ocupada</td>
-							<td>${h.ocupacion.huesped}</td>
-							<td>${h.ocupacion.fechaIngreso}</td>
-							<td>${h.ocupacion.fechaSalida}</td>
-							<td><button data-hab="${h.numero}" class="btn-ingreso">${ingreso}</button></td>
-							<td><button data-hab="${h.numero}" class="btn-pago">${pago}</button></td>
-						`;
-						tabla.appendChild(tr);
-					} else {
-						const tr = document.createElement('tr');
-						tr.innerHTML = `
-							<td>${h.numero}</td>
-							<td class="disponible">Disponible</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						`;
-						tabla.appendChild(tr);
-					}
-					// Selects
-					if (!h.ocupacion) {
-						const opt = document.createElement('option');
-						opt.value = h.numero;
-						opt.textContent = h.numero;
-						selectCheckin.appendChild(opt);
-					}
-					if (h.ocupacion) {
-						const opt = document.createElement('option');
-						opt.value = h.numero;
-						opt.textContent = h.numero;
-						selectCheckout.appendChild(opt);
-					}
-				});
+<section>
+    <h2>Menú</h2>
+    <p class="contacto">
+        Consulta aquí nuestro menú completo: <a href="https://menupinogrande.wordpress.com" target="_blank">Menú del Restaurante</a>
+    </p>
+</section>
 
-				// Asignar eventos a los botones de ingreso y pago después de renderizar la tabla
-				document.querySelectorAll('.btn-ingreso').forEach(btn => {
-					btn.addEventListener('click', function() {
-						const num = this.getAttribute('data-hab');
-						let habitaciones = getHabitaciones();
-						const hab = habitaciones.find(h => h.numero === num);
-						if (hab && hab.ocupacion) {
-							hab.ocupacion.ingreso = !hab.ocupacion.ingreso;
-							setHabitaciones(habitaciones);
-							render();
-						}
-					});
-				});
-				document.querySelectorAll('.btn-pago').forEach(btn => {
-					btn.addEventListener('click', function() {
-						const num = this.getAttribute('data-hab');
-						let habitaciones = getHabitaciones();
-						const hab = habitaciones.find(h => h.numero === num);
-						if (hab && hab.ocupacion) {
-							hab.ocupacion.pago = !hab.ocupacion.pago;
-							setHabitaciones(habitaciones);
-							render();
-						}
-					});
-				});
-		// Informe de habitaciones ocupadas
-		document.getElementById('btnInformeOcupadas').onclick = function() {
-			let habitaciones = getHabitaciones();
-			let ocupadas = habitaciones.filter(h => h.ocupacion);
-			let html = '';
-			if (ocupadas.length === 0) {
-				html = '<b>No hay habitaciones ocupadas actualmente.</b>';
-			} else {
-				   html = `<b>Habitaciones ocupadas (${ocupadas.length}):</b><ul>` +
-					   ocupadas.map((h, i) => `<li><b>#${i + 1}</b> - Habitación ${h.numero} - ${h.ocupacion.huesped} (${h.ocupacion.fechaIngreso} a ${h.ocupacion.fechaSalida})</li>`).join('') +
-					   `</ul><b>Total de habitaciones ocupadas: ${ocupadas.length}</b>`;
-			}
-			document.getElementById('informeOcupadas').innerHTML = html;
-		};
-				// Mostrar recordatorios
-				const recDiv = document.getElementById('recordatorios');
-				if (recordatorios.length > 0) {
-					recDiv.innerHTML = `<b>Reservaciones para hoy:</b><ul><li>${recordatorios.join('</li><li>')}</li></ul>`;
-				} else {
-					recDiv.innerHTML = '';
-				}
-				// Mostrar reservas futuras
-				const futDiv = document.getElementById('reservasFuturas');
-				if (reservasFuturas.length > 0) {
-					futDiv.innerHTML = `<b>Reservaciones futuras:</b><ul><li>${reservasFuturas.join('</li><li>')}</li></ul>`;
-				} else {
-					futDiv.innerHTML = '';
-				}
-				// Mostrar historial de reservas pasadas
-				const histDiv = document.getElementById('historialReservas');
-				if (historial.length > 0) {
-					histDiv.innerHTML = `<b>Historial de reservas pasadas:</b><ul><li>${historial.join('</li><li>')}</li></ul>`;
-				} else {
-					histDiv.innerHTML = '';
-				}
+<footer>
+    <p>&copy; 2025 Hotel y Restaurante Pino Grande. Todos los derechos reservados.</p>
+</footer>
 
-		}
-
-
-
-		// Check-in: solo si hay reserva activa para hoy o si está libre
-		document.getElementById('formCheckin').onsubmit = function(e) {
-			e.preventDefault();
-			const numero = document.getElementById('habitacionCheckin').value;
-			const huesped = document.getElementById('nombreHuesped').value.trim();
-			const fechaIngreso = document.getElementById('fechaIngreso').value;
-			const fechaSalida = document.getElementById('fechaSalida').value;
-			if (!numero || !huesped || !fechaIngreso || !fechaSalida) return;
-			if (fechaSalida < fechaIngreso) {
-				alert('La fecha de salida no puede ser antes de la fecha de ingreso.');
-				return;
-			}
-			let habitaciones = getHabitaciones();
-			habitaciones = habitaciones.map(h => {
-				if (h.numero === numero) {
-					// No permitir check-in si está ocupada o si hay una reserva de otro huésped para ese rango
-					if (h.ocupacion) {
-						alert('La habitación ya está ocupada.');
-						return h;
-					}
-					if (h.reservas.some(r => !(fechaSalida < r.fechaIngreso || fechaIngreso > r.fechaSalida) && r.huesped !== huesped)) {
-						alert('Ya existe una reserva de otro huésped que se cruza con esas fechas.');
-						return h;
-					}
-					// Si hay una reserva para este huésped y rango, la quitamos
-					let nuevaReservas = h.reservas.filter(r => (r.huesped !== huesped || r.fechaIngreso !== fechaIngreso || r.fechaSalida !== fechaSalida));
-					return { ...h, ocupacion: { huesped, fechaIngreso, fechaSalida, ingreso: false, pago: false }, reservas: nuevaReservas, estado: 'Ocupada' };
-				}
-				return h;
-			});
-			setHabitaciones(habitaciones);
-			this.reset();
-			render();
-		};
-
-		// Check-out: libera la ocupación actual
-		document.getElementById('formCheckout').onsubmit = function(e) {
-			e.preventDefault();
-			const numero = document.getElementById('habitacionCheckout').value;
-			if (!numero) return;
-			let habitaciones = getHabitaciones();
-			habitaciones = habitaciones.map(h =>
-				h.numero === numero ? { ...h, ocupacion: null, estado: 'Disponible' } : h
-			);
-			setHabitaciones(habitaciones);
-			this.reset();
-			render();
-		};
-
-		// Inicializar
-		render();
-	</script>
 </body>
 </html>
