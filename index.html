@@ -4,181 +4,256 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hotel y Restaurante Pino Grande</title>
+    <meta name="description" content="Hotel y Restaurante Pino Grande — cabañas, gastronomía regional y naturaleza en Aldea Machaquilá, Poptún, Petén.">
     <style>
-        /* Estilos generales */
+        :root{
+            --accent:#2b8a6f;
+            --dark:#222;
+            --muted:#767676;
+            --card:#ffffff;
+            --radius:10px;
+        }
+        *{box-sizing:border-box}
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Inter', Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #fdfdfd;
-            color: #444;
+            background-color: #f7f7f7;
+            color: var(--dark);
         }
-
-        header {
-            background: url('https://via.placeholder.com/1400x700') no-repeat center center/cover;
-            text-align: center;
-            color: white;
-            padding: 150px 20px;
-            margin-bottom: 30px;
+        /* Navegación */
+        .nav{
+            display:flex;justify-content:space-between;align-items:center;padding:12px 24px;background:rgba(255,255,255,0.95);position:sticky;top:0;z-index:30;border-bottom:1px solid #eee
         }
+        .brand{font-weight:700;color:var(--accent)}
+        .nav a{margin-left:16px;color:var(--dark);text-decoration:none}
 
-        header h1 {
-            font-size: 3.5rem;
-            margin: 0;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        /* Hero */
+        header.hero{
+            background:linear-gradient(rgba(14,34,25,0.35), rgba(14,34,25,0.35)), url('https://images.unsplash.com/photo-1501117716987-c8e5f151a24b?auto=format&fit=crop&w=1400&q=60') center/cover no-repeat;
+            color:white;padding:100px 20px;text-align:center;position:relative;
         }
+        header.hero h1{font-size:2.6rem;margin:0 0 10px;text-shadow:0 2px 10px rgba(0,0,0,0.4)}
+        header.hero p{font-size:1.1rem;margin:0 0 18px}
+        .cta{display:inline-block;background:var(--accent);color:white;padding:12px 20px;border-radius:8px;text-decoration:none;font-weight:600}
 
-        header p {
-            font-size: 1.5rem;
-            margin: 10px 0;
-        }
+        main{max-width:1100px;margin:28px auto;padding:0 18px}
 
-        section {
-            padding: 40px 20px;
-            max-width: 1200px;
-            margin: auto;
-        }
+        section{margin-bottom:36px}
+        section h2{font-size:1.6rem;color:var(--dark);margin-bottom:12px}
+        section p{color:var(--muted);margin:0 0 12px}
 
-        section h2 {
-            font-size: 2.5rem;
-            color: #222;
-            text-align: center;
-            margin-bottom: 30px;
-        }
+        /* Cards */
+        .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+        .card{background:var(--card);border-radius:var(--radius);box-shadow:0 6px 18px rgba(16,24,32,0.06);overflow:hidden}
+        .card img{width:100%;height:180px;object-fit:cover;display:block}
+        .card .body{padding:14px}
 
-        section p {
-            font-size: 1.25rem;
-            margin-bottom: 20px;
-            text-align: justify;
-        }
+        /* Galería */
+        .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+        .gallery img{width:100%;height:120px;object-fit:cover;border-radius:8px;cursor:pointer}
 
-        /* Estilo del menú */
-        .menu-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
+        /* Testimonials */
+        .testimonials{display:flex;gap:12px}
+        .testimonial{background:#fff;padding:12px;border-radius:8px;flex:1}
 
-        .menu-item {
-            flex: 1 1 calc(33.33% - 20px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            overflow: hidden;
-            background: white;
-            text-align: center;
-        }
+        /* Contact form */
+        .contact{display:grid;grid-template-columns:1fr 320px;gap:18px}
+        form{background:#fff;padding:16px;border-radius:10px}
+        label{display:block;margin-bottom:6px;font-size:0.9rem}
+        input,textarea,select{width:100%;Padding:10px;margin-bottom:10px;border:1px solid #e3e3e3;border-radius:6px}
+        button[type=submit]{background:var(--accent);color:#fff;border:none;padding:10px 14px;border-radius:8px;cursor:pointer}
 
-        .menu-item img {
-            width: 100%;
-            height: auto;
-        }
+        /* Map */
+        #map{width:100%;height:300px;border-radius:10px;border:1px solid #e6e6e6}
 
-        .menu-item p {
-            padding: 10px;
-        }
+        footer{background:var(--dark);color:#fff;padding:18px;text-align:center}
 
-        /* Mapa */
-        #map {
-            width: 100%;
-            height: 400px;
-            border: 1px solid #ddd;
-            margin: 30px 0;
-        }
-
-        footer {
-            text-align: center;
-            padding: 15px;
-            background-color: #222;
-            color: white;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .menu-item {
-                flex: 1 1 calc(50% - 20px);
-            }
-
-            header h1 {
-                font-size: 2.5rem;
-            }
-
-            header p {
-                font-size: 1.1rem;
-            }
-        }
+        @media (max-width:1024px){.grid{grid-template-columns:repeat(2,1fr)}.gallery{grid-template-columns:repeat(3,1fr)}.contact{grid-template-columns:1fr}}
+        @media (max-width:600px){header.hero{padding:60px 18px}.grid{grid-template-columns:1fr}.gallery{grid-template-columns:repeat(2,1fr)}.nav{padding:10px}}
     </style>
 </head>
 <body>
 
-<header>
-    <h1>HOTEL Y RESTAURANTE PINO GRANDE</h1>
-    <p>Disfruta de confort, naturaleza y gastronomía en un entorno inolvidable.</p>
+<nav class="nav">
+    <div class="brand">Pino Grande</div>
+    <div>
+        <a href="#about">Nosotros</a>
+        <a href="#cabanas">Cabañas</a>
+        <a href="#menu">Menú</a>
+        <a href="#galeria">Galería</a>
+        <a href="#contacto">Contacto</a>
+    </div>
+</nav>
+
+<header class="hero">
+    <h1>Hotel y Restaurante Pino Grande</h1>
+    <p>Confort rústico y gastronomía regional en la tranquilidad de Petén.</p>
+    <a class="cta" href="#contacto">Reservar / Consultar</a>
 </header>
 
-<section>
-    <h2>Bienvenidos a un Lugar Único</h2>
-    <p>
-        Descubre un rincón escondido en Aldea Machaquilá, Poptún, Petén, donde la calma natural se une con 
-        la cálida hospitalidad de nuestras encantadoras cabañas. En nuestro hotel, cada detalle está pensado 
-        para tu comodidad y relajación.
-    </p>
-</section>
+<main>
+    <section id="about">
+        <h2>Bienvenidos</h2>
+        <p>En Pino Grande ofrecemos una experiencia auténtica: cabañas rodeadas de naturaleza, atención familiar y recetas tradicionales elaboradas con ingredientes locales. Nos enfocamos en brindar comodidad, privacidad y actividades relajantes como caminatas, observación de aves y rutas cercanas a sitios naturales.</p>
+    </section>
 
-<section>
-    <h2>Nuestras Cabañas</h2>
-    <p>
-        Explora cabañas de estilo rústico pero modernas, diseñadas para una escapada ideal. Desde ventanas llenas de luz hasta 
-        camas confortables, tu experiencia será inolvidable. Cada cabaña está rodeada de exuberancia verde, permitiendo paz y 
-        máximo contacto con el entorno natural.
-    </p>
-</section>
+    <section id="cabanas">
+        <h2>Nuestras Cabañas</h2>
+        <div class="grid">
+            <article class="card">
+                <img src="https://images.unsplash.com/photo-1505691723518-36a8636a1b7d?auto=format&fit=crop&w=800&q=60" alt="Cabaña estándar">
+                <div class="body">
+                    <h3>Estándar</h3>
+                    <p>Perfecta para parejas o viajeros solos, con cama queen, terraza privada y vista al bosque.</p>
+                </div>
+            </article>
+            <article class="card">
+                <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=800&q=60" alt="Cabaña familiar">
+                <div class="body">
+                    <h3>Familiar</h3>
+                    <p>Espaciosa, con dos camas dobles y servicio de desayuno para familias o grupos pequeños.</p>
+                </div>
+            </article>
+            <article class="card">
+                <img src="https://images.unsplash.com/photo-1501117716987-c8e5f151a24b?auto=format&fit=crop&w=800&q=60" alt="Cabaña premium">
+                <div class="body">
+                    <h3>Premium</h3>
+                    <p>Con detalles de lujo: hamaca, baño privado con agua caliente y espacio exterior para asados.</p>
+                </div>
+            </article>
+        </div>
+    </section>
 
-<section>
-    <h2>Menú Elegante</h2>
-    <div class="menu-container">
-        <div class="menu-item">
-            <img src="https://via.placeholder.com/400x300" alt="Plato típico">
-            <p>Huevos con frijoles, acompañados de plátanos fritos y tortillas recién hechas.</p>
-        </div>
-        <div class="menu-item">
-            <img src="https://via.placeholder.com/400x300" alt="Plato típico">
-            <p>Pollo al horno con ensalada fresca de la región.</p>
-        </div>
-        <div class="menu-item">
-            <img src="https://via.placeholder.com/400x300" alt="Plato típico">
-            <p>Café 100% guatemalteco, tostado con el aroma perfecto.</p>
-        </div>
-    </div>
-</section>
+    <section id="servicios">
+        <h2>Servicios y Amenidades</h2>
+        <p>Ofrecemos desayuno incluido, comida típica, servicio de guías locales, transporte bajo petición y espacios para eventos pequeños. Acceso a senderos en la propiedad y actividades culturales bajo reserva.</p>
+    </section>
 
-<section id="contacto">
-    <h2>Ubicación</h2>
-    <div id="map"></div>
-    <p style="text-align: center;">
-        Dirección: Aldea Machaquilá, Poptún, Petén, Guatemala<br>
-        Teléfono: <strong>5804-3907</strong>
-    </p>
-</section>
+    <section id="menu">
+        <h2>Menú destacado</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=800&q=60" alt="Desayuno típico">
+                <div class="body">
+                    <h3>Desayuno tradicional</h3>
+                    <p>Huevos a la gusto, frijoles salcochados, plátanos fritos, tortillas artesanales y café 100% guatemalteco.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1523986371872-9d3ba2e2f642?auto=format&fit=crop&w=800&q=60" alt="Pollo asado">
+                <div class="body">
+                    <h3>Pollo al horno con hierbas</h3>
+                    <p>Preparación casera con vegetales de la región y ensalada fresca de temporada.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=800&q=60" alt="Postres locales">
+                <div class="body">
+                    <h3>Postres y café</h3>
+                    <p>Opciones de postres locales y café tostado de la zona, servido al momento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria">
+        <h2>Galería</h2>
+        <div class="gallery">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=60" alt="Vista del bosque" data-large="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80">
+            <img src="https://images.unsplash.com/photo-1505691723518-36a8636a1b7d?auto=format&fit=crop&w=600&q=60" alt="Interior cabaña" data-large="https://images.unsplash.com/photo-1505691723518-36a8636a1b7d?auto=format&fit=crop&w=1400&q=80">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=60" alt="Comida típica" data-large="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80">
+            <img src="https://images.unsplash.com/photo-1523986371872-9d3ba2e2f642?auto=format&fit=crop&w=600&q=60" alt="Área exterior" data-large="https://images.unsplash.com/photo-1523986371872-9d3ba2e2f642?auto=format&fit=crop&w=1400&q=80">
+        </div>
+    </section>
+
+    <section id="testimonios">
+        <h2>Testimonios</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                <strong>María R.</strong>
+                <p>"Excelente atención y comida deliciosa. Volveremos con la familia."</p>
+            </div>
+            <div class="testimonial">
+                <strong>Carlos D.</strong>
+                <p>"Un lugar perfecto para desconectar. Las cabañas son muy cómodas."</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto">
+        <h2>Contacto y Reservas</h2>
+        <div class="contact">
+            <form id="reserva">
+                <label for="nombre">Nombre</label>
+                <input id="nombre" name="nombre" required>
+
+                <label for="email">Correo electrónico</label>
+                <input id="email" name="email" type="email" required>
+
+                <label for="fecha">Fecha de llegada</label>
+                <input id="fecha" name="fecha" type="date">
+
+                <label for="mensaje">Mensaje / Petición</label>
+                <textarea id="mensaje" name="mensaje" rows="4"></textarea>
+
+                <button type="submit">Enviar consulta</button>
+            </form>
+
+            <div>
+                <div style="background:#fff;padding:12px;border-radius:10px;margin-bottom:12px">
+                    <h3>Ubicación</h3>
+                    <div id="map"></div>
+                    <p style="margin-top:8px;color:var(--muted)">Aldea Machaquilá, Poptún, Petén, Guatemala<br>Teléfono: <strong>5804-3907</strong></p>
+                </div>
+
+                <div style="background:#fff;padding:12px;border-radius:10px">
+                    <h3>Horario</h3>
+                    <p style="color:var(--muted)">Abierto todos los días: 6:30 - 22:00 (Restaurante). Recepción disponible con cita previa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
 
 <footer>
-    <p>&copy; 2025 Hotel y Restaurante Pino Grande. Todos los derechos reservados.</p>
+    <p>&copy; 2025 Hotel y Restaurante Pino Grande. Todos los derechos reservados. <span style="opacity:0.85;display:block;margin-top:6px">Reemplaza la clave de Google Maps en el script para activar el mapa.</span></p>
 </footer>
 
-<!-- Google Maps API -->
+<!-- Scripts: galería modal, formulario básico y mapa -->
 <script>
-    function initMap() {
+    // Galería: abrir imagen en nueva pestaña simple (mantener ligero)
+    document.querySelectorAll('.gallery img').forEach(img => {
+        img.addEventListener('click', ()=>{
+            const large = img.dataset.large || img.src;
+            window.open(large, '_blank');
+        })
+    });
+
+    // Formulario: validación básica y feedback simple
+    document.getElementById('reserva').addEventListener('submit', function(e){
+        e.preventDefault();
+        const nombre = document.getElementById('nombre').value.trim();
+        const email = document.getElementById('email').value.trim();
+        if(!nombre || !email){
+            alert('Por favor completa los campos obligatorios: Nombre y Correo.');
+            return;
+        }
+        alert('Gracias, su consulta ha sido enviada. Le contactaremos pronto.');
+        this.reset();
+    });
+
+    // Google Maps init: mantiene lat/lng y añade marcador
+    function initMap(){
         var location = { lat: 16.3718811, lng: -89.4418307 };
-        var map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 14,
-            center: location
-        });
-        var marker = new google.maps.Marker({
-            position: location,
-            map: map
-        });
+        var mapEl = document.getElementById('map');
+        if(!mapEl) return;
+        var map = new google.maps.Map(mapEl, {center: location, zoom: 13});
+        var marker = new google.maps.Marker({position: location, map: map, title: 'Pino Grande'});
     }
+    // Nota: reemplaza 'TU_API_KEY' por tu clave real
+    window.initMap = initMap;
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY&callback=initMap" async></script>
 
